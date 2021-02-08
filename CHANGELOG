@@ -4,3 +4,7 @@
 [0.2.0]
 * Updated to Forge 30.0.15
 * Fixed frontend logs not displaying
+
+[0.2.0]
+* Added postinstall message
+* Cleaned up documentation
