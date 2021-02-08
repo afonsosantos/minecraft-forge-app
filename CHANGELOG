@@ -1,2 +1,6 @@
-[1.0.0]
+[0.1.0]
 * Initial release
+
+[0.2.0]
+* Updated to Forge 30.0.15
+* Fixed frontend logs not displaying

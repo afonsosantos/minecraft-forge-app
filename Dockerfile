@@ -5,6 +5,9 @@ WORKDIR /app/code
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk-headless && rm -rf /var/cache/apt /var/lib/apt/lists
 
+ENV MC_VERSION=1.16.5
+ENV FORGE_VERSION=36.0.15
+
 COPY frontend /app/code/frontend
 COPY backend /app/code/backend
 COPY forge /app/code/forge

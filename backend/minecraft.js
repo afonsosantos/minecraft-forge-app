@@ -42,13 +42,13 @@ function start() {
     var opts = { cwd: path.join(__dirname, '..') };
     if (process.env.CLOUDRON) opts.cwd = '/app/data';
 
-    minecraft = require('child_process').spawn('java', [`-Xmx${memoryLimit}M`, `-Xms${memoryLimit}M`, '-jar', path.join(__dirname, '../forge/forge.jar'), 'nogui'], opts);
+    minecraft = require('child_process').spawn('java', [`-Xmx${memoryLimit}M`, `-Xms${memoryLimit}M`, '-jar', path.join(__dirname, `../forge/forge-${process.env.MC_VERSION}-${process.env.FORGE_VERSION}.jar`), 'nogui'], opts);
 
     logLineStream = byline(minecraft.stdout);
     logLineStream.on('data', function (line) {
         console.log(line.toString()); // also log to stdout
         logListeners.forEach(function (l) {
-            l.emit('line', line.toString().split('[Server thread/INFO]:')[1]);
+            l.emit('line', line.toString().split('[Server thread/INFO]')[1]);
         });
     });
 
