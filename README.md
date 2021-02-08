@@ -5,6 +5,7 @@
 4) Update the minecraft and forge versions in the Dockerfile
 
 # Adding Mods:
-To add mods, first download a mod from here (must be built for Forge.): https://www.curseforge.com/minecraft/mc-mods?filter-game-version=2020709689%3A7498&filter-sort=4
+Mods can be added by downloading the appropriate .jar files and uploading them to /app/data/mods. This step requires a re-load.
 
-Add the jar files for the mod to your /app/data/mods folder and add the corresponding jar files to youe minecraft forge client.
+Compatible Mods: https://www.curseforge.com/minecraft/mc-mods?filter-game-version=2020709689%3A7498&filter-sort=4
+Adding Mods to your Minecraft Client: https://mcforge.readthedocs.io/en/latest/
