@@ -44,6 +44,13 @@ header > h1 {
     font-weight: normal;
 }
 
+header > h2 {
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
 footer {
     width: 100%;
     text-align: center;

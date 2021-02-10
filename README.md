@@ -1,3 +1,4 @@
+# IMPORTANT NOTE - Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos
 # Adding Mods:
 Mods can be added by downloading the appropriate .jar files and uploading them to /app/data/mods. This step requires a re-load.
 
