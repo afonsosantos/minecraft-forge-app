@@ -11,3 +11,7 @@
 
 [0.4.0]
 * Switched to proper automation of the Forge installation
+
+[0.5.0]
+* Cleaned up maintainer attribution notes
+* Updated the web UI to clarify that this is for Forge
