@@ -23,8 +23,8 @@
   "minBoxVersion": "5.3.0",
   "website": "https://www.patreon.com/LexManos",
   "contactEmail": "support@cloudron.io",
-  "documentationUrl": "https://docs.cloudron.io/apps/minecraft-forge/",
-  "forumUrl": "https://forum.cloudron.io/category/49/minecraft-forge",
+  "documentationUrl": "https://docs.cloudron.io/apps/minecraft/",
+  "forumUrl": "https://forum.cloudron.io/category/49/minecraft",
   "mediaLinks": [
     "https://screenshots.cloudron.io/net.minecraft.cloudronapp/minecraft-01.png"
   ],
