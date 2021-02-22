@@ -15,3 +15,5 @@
 [0.5.0]
 * Cleaned up maintainer attribution notes
 * Updated the web UI to clarify that this is for Forge
+* Updated to base image v3
+* Fixed forum and docs links
