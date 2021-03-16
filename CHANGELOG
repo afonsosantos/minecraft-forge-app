@@ -17,3 +17,6 @@
 * Updated the web UI to clarify that this is for Forge
 * Updated to base image v3
 * Fixed forum and docs links
+
+[0.6.0]
+* Upgraded to the newest stable forge release (36.1.0)
