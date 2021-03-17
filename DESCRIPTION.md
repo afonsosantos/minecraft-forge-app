@@ -1,7 +1,7 @@
 ### Overview
 IMPORTANT NOTE - Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos
 
-This app packages the Minecraft Java Edition Forge server <upstream>36.0.15</upstream> for minecraft <upstream>1.16.5</upstream>.
+This app packages the Minecraft Java Edition Forge server <upstream>36.1.0</upstream> for minecraft <upstream>1.16.5</upstream>.
 
 This package 
 
