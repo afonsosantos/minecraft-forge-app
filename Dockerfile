@@ -5,8 +5,9 @@ WORKDIR /app/code
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk-headless && rm -rf /var/cache/apt /var/lib/apt/lists
 
-ENV MC_VERSION=1.16.5
-ENV FORGE_VERSION=36.1.0
+# https://files.minecraftforge.net/net/minecraftforge/forge/
+ENV MC_VERSION=1.17.1
+ENV FORGE_VERSION=37.0.22
 
 RUN curl -L https://files.minecraftforge.net/maven/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar >> forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
 RUN java -jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar --installServer .
