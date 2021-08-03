@@ -20,3 +20,8 @@
 
 [0.6.0]
 * Upgraded to the newest stable forge release (36.1.0)
+
+[0.7.0]
+* Update forge server to 37.0.22 for minecraft 1.17.1
+
+
