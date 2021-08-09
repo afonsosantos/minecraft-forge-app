@@ -1,6 +1,6 @@
 ### Overview
 
-IMPORTANT NOTE - Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos
+**Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos**.
 
 This app packages the Minecraft Java Edition Forge server <upstream>37.0.22</upstream> for minecraft <upstream>1.17.1</upstream>.
 
