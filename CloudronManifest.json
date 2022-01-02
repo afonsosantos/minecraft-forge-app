@@ -7,7 +7,7 @@
   "changelog": "file://CHANGELOG",
   "postInstallMessage": "file://POSTINSTALL.md",
   "tagline": "Multiplayer Server for Minecraft Forge",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "healthCheckPath": "/api/v1/healthcheck",
   "tags": [ "game", "multiplayer" ],
   "memoryLimit": 2147483648,
