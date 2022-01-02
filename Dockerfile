@@ -10,7 +10,8 @@ ENV MC_VERSION=1.18.1
 ENV FORGE_VERSION=39.0.9
 
 RUN curl -L https://files.minecraftforge.net/maven/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar >> forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
-RUN java -jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar --installServer .
+RUN java -jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar --installServer . && \
+    rm /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar.log
 
 COPY frontend /app/code/frontend
 COPY backend /app/code/backend
