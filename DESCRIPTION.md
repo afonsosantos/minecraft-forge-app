@@ -1,8 +1,9 @@
+This app packages the Minecraft Java Edition Forge server <upstream>39.0.9 (for minecraft 1.18.1)</upstream>.
+
 ### Overview
 
 **Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos**.
 
-This app packages the Minecraft Java Edition Forge server <upstream>39.0.9</upstream> for minecraft <upstream>1.18.1</upstream>.
 
 This package 
 
