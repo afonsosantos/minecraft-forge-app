@@ -39,10 +39,12 @@ function status() {
 function start() {
     console.log('start minecraft server with memory limit', memoryLimit, 'M');
 
-    var opts = { cwd: path.join(__dirname, '..') };
+    var opts = { cwd: "/app/data" };
     if (process.env.CLOUDRON) opts.cwd = '/app/data';
-
-    minecraft = require('child_process').spawn('java', [`-Xmx${memoryLimit}M`, `-Xms${memoryLimit}M`, '-jar', path.join(__dirname, `../forge-${process.env.MC_VERSION}-${process.env.FORGE_VERSION}.jar`), 'nogui'], opts);
+    
+    require('child_process').exec(`cd /app/data && echo "-Xmx${memoryLimit}M" > ./user_jvm_args.txt && echo "-Xms${memoryLimit}M" >> ./user_jvm_args.txt`);
+    
+    minecraft = require('child_process').spawn('java', [`@user_jvm_args.txt`, `@libraries/net/minecraftforge/forge/1.18.2-40.1.0/unix_args.txt`, 'nogui', `"$@"`], opts);
 
     logLineStream = byline(minecraft.stdout);
     logLineStream.on('data', function (line) {
