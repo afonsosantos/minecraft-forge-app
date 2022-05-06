@@ -17,6 +17,11 @@
       "title": "Server Port",
       "description": "Server Port where Minecraft clients connect",
       "defaultValue": 25565
+    },
+    "RCON_PORT": {
+      "title": "RCON Port",
+      "description": "Port for remote configuration clients",
+      "defaultValue": 25575
     }
   },
   "manifestVersion": 2,

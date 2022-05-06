@@ -1,4 +1,4 @@
-This app packages the Minecraft Java Edition Forge server <upstream>39.0.9 (for minecraft 1.18.1)</upstream>.
+This app packages the Minecraft Java Edition Forge server <upstream>40.1.0 (for minecraft 1.18.2)</upstream>.
 
 ### Overview
 
