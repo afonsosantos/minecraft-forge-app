@@ -1,11 +1,6 @@
-This app packages the Minecraft Java Edition Forge server <upstream>40.1.0 (for minecraft 1.18.2)</upstream>.
-
 ### Overview
 
 **Please consider supporting the maintainer of Forge here: https://www.patreon.com/LexManos**.
-
-
-This package 
 
 Minecraft is a game about breaking and placing blocks. At first, people built structures to protect against nocturnal monsters, but as the game grew players worked together to create wonderful, imaginative things.
 

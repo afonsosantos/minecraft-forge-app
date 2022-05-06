@@ -7,7 +7,8 @@
   "changelog": "file://CHANGELOG",
   "postInstallMessage": "file://POSTINSTALL.md",
   "tagline": "Multiplayer Server for Minecraft Forge",
-  "version": "0.7.2",
+  "version": "1.0.0",
+  "upstreamVersion": "40.1.0 (for minecraft 1.18.2)",
   "healthCheckPath": "/api/v1/healthcheck",
   "tags": [ "game", "multiplayer" ],
   "memoryLimit": 2147483648,
@@ -25,7 +26,7 @@
     }
   },
   "manifestVersion": 2,
-  "minBoxVersion": "5.3.0",
+  "minBoxVersion": "7.1.0",
   "website": "https://www.patreon.com/LexManos",
   "contactEmail": "support@cloudron.io",
   "documentationUrl": "https://docs.cloudron.io/apps/minecraft/",
