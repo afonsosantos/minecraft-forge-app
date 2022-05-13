@@ -30,7 +30,7 @@ const LDAP_URL = process.env.CLOUDRON_LDAP_URL;
 const LDAP_USERS_BASE_DN = process.env.CLOUDRON_LDAP_USERS_BASE_DN;
 const LOCAL_AUTH_FILE = path.resolve('users.json');
 
-const baseDir = process.env.CLOUDRON ? '/app/data' : path.join(__dirname, '..')
+const baseDir = process.env.CLOUDRON ? '/app/data' : path.join(__dirname, '..');
 const configFilePath = path.join(baseDir, 'server.properties');
 
 var users = {};
@@ -69,44 +69,50 @@ function auth(req, res, next) {
         return next();
     }
 
-    if (AUTH_METHOD === 'ldap') {
-        var ldapClient = ldapjs.createClient({ url: LDAP_URL });
-        ldapClient.on('error', function (error) {
-            console.error('LDAP error', error);
-        });
-
-        ldapClient.bind(process.env.CLOUDRON_LDAP_BIND_DN, process.env.CLOUDRON_LDAP_BIND_PASSWORD, function (error) {
-            if (error) return next(new HttpError(500, error));
-
-            var filter = `(|(uid=${credentials.name})(mail=${credentials.name})(username=${credentials.name})(sAMAccountName=${credentials.name}))`;
-            ldapClient.search(process.env.CLOUDRON_LDAP_USERS_BASE_DN, { filter: filter }, function (error, result) {
-                if (error) return next(new HttpError(500, error));
-
-                var items = [];
-
-                result.on('searchEntry', function(entry) { items.push(entry.object); });
-                result.on('error', function (error) { next(new HttpError(500, error)); });
-                result.on('end', function (result) {
-                    if (result.status !== 0) return next(new HttpError(500, error));
-                    if (items.length === 0) return next(new HttpError(401, 'Invalid credentials'));
-
-                    // pick the first found
-                    var user = items[0];
-
-                    ldapClient.bind(user.dn, credentials.pass, function (error) {
-                        if (error) return next(new HttpError(401, 'Invalid credentials'));
-
-                        attachUser({ username: user.username, email: user.mail });
-                    });
-                });
-            });
-        });
-    } else {
+    if (AUTH_METHOD !== 'ldap') {
         let user = users.find(function (u) { return (u.username === credentials.name || u.email === credentials.name) && u.password === credentials.pass; });
         if (!user) return next(new HttpError(401, 'Invalid credentials'));
 
-        attachUser(user);
+        return attachUser(user);
     }
+
+    const ldapClient = ldapjs.createClient({ url: LDAP_URL });
+
+    function handleLdapError(error) {
+        ldapClient.unbind();
+        console.error('LDAP error', error);
+        return next(error);
+    }
+
+    ldapClient.on('error', handleLdapError);
+
+    ldapClient.bind(process.env.CLOUDRON_LDAP_BIND_DN, process.env.CLOUDRON_LDAP_BIND_PASSWORD, function (error) {
+        if (error) return handleLdapError(new HttpError(500, error));
+
+        const filter = `(|(uid=${credentials.name})(mail=${credentials.name})(username=${credentials.name})(sAMAccountName=${credentials.name}))`;
+        ldapClient.search(process.env.CLOUDRON_LDAP_USERS_BASE_DN, { filter: filter }, function (error, result) {
+            if (error) return handleLdapError(new HttpError(500, error));
+
+            var items = [];
+
+            result.on('searchEntry', function(entry) { items.push(entry.object); });
+            result.on('error', function (error) { handleLdapError(new HttpError(500, error)); });
+            result.on('end', function (result) {
+                if (result.status !== 0) return handleLdapError(new HttpError(500, error));
+                if (items.length === 0) return handleLdapError(new HttpError(401, 'Invalid credentials'));
+
+                // pick the first found
+                var user = items[0];
+
+                ldapClient.bind(user.dn, credentials.pass, function (error) {
+                    if (error) return handleLdapError(new HttpError(401, 'Invalid credentials'));
+
+                    ldapClient.unbind();
+                    attachUser({ username: user.username, email: user.mail });
+                });
+            });
+        });
+    });
 }
 
 function profile(req, res, next) {
