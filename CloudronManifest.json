@@ -7,7 +7,7 @@
   "changelog": "file://CHANGELOG",
   "postInstallMessage": "file://POSTINSTALL.md",
   "tagline": "Multiplayer Server for Minecraft Forge",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "upstreamVersion": "40.1.0 (for minecraft 1.18.2)",
   "healthCheckPath": "/api/v1/healthcheck",
   "tags": [ "game", "multiplayer" ],
