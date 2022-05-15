@@ -9,15 +9,13 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk-headless && rm -rf /var/
 ENV MC_VERSION=1.18.2
 ENV FORGE_VERSION=40.1.0
 
-RUN curl -L https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar >> forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
-RUN java -jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar --installServer /app/data && \
-    rm /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar /app/code/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar.log
+RUN curl -L https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar -o forge-installer.jar
+RUN java -jar /app/code/forge-installer.jar --installServer /app/code/forge && \
+    rm /app/code/forge-installer.jar /app/code/forge-installer.jar.log
 
 COPY frontend /app/code/frontend
 COPY backend /app/code/backend
 COPY index.js package.json package-lock.json start.sh server.properties.template /app/code/
-RUN chmod +x /app/data/run.sh
-RUN chmod +x /app/data/user_jvm_args.txt
 
 RUN npm install
 

@@ -6,6 +6,7 @@ SETTINGS_FILE="/app/data/server.properties"
 
 echo "=> Ensure directories"
 mkdir -p /app/data/
+rm -rf /app/data/libraries && ln -sf /app/code/forge/libraries /app/data/libraries
 
 echo "=> Accept EULA"
 echo "eula=true" > /app/data/eula.txt

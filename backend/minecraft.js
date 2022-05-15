@@ -42,9 +42,7 @@ function start() {
     var opts = { cwd: "/app/data" };
     if (process.env.CLOUDRON) opts.cwd = '/app/data';
     
-    require('child_process').exec(`cd /app/data && echo "-Xmx${memoryLimit}M" > ./user_jvm_args.txt && echo "-Xms${memoryLimit}M" >> ./user_jvm_args.txt`);
-    
-    minecraft = require('child_process').spawn('java', [`@user_jvm_args.txt`, `@libraries/net/minecraftforge/forge/1.18.2-40.1.0/unix_args.txt`, 'nogui', `"$@"`], opts);
+    minecraft = require('child_process').spawn('java', [`-Xmx${memoryLimit}M`, `-Xms${memoryLimit}M`, `@/app/code/forge/libraries/net/minecraftforge/forge/1.18.2-40.1.0/unix_args.txt`, 'nogui', `"$@"`], opts);
 
     logLineStream = byline(minecraft.stdout);
     logLineStream.on('data', function (line) {
